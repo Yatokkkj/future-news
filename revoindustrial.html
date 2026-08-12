@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Future News — Da Máquina a Vapor à Inteligência Artificial</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg: #12161b;
+    --line: #33404a;
+    --text: #e7e5e0;
+    --muted: #9aa5ad;
+    --copper: #c98a5c;
+    --cyan: #7fc4b8;
+  }
+
+  *{ box-sizing: border-box; }
+
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Sans', Arial, sans-serif;
+    line-height: 1.65;
+  }
+
+  h1,h2,h3{
+    font-family: 'Space Grotesk', Arial, sans-serif;
+    margin: 0;
+  }
+
+  a{ color: var(--cyan); }
+
+  .eyebrow{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--copper);
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    border-bottom: 1px solid var(--line);
+    padding: 16px 20px;
+    display:flex;
+    justify-content:center;
+    gap: clamp(14px, 3vw, 30px);
+    flex-wrap: wrap;
+  }
+
+  nav a{
+    color: var(--muted);
+    text-decoration:none;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+  nav a:hover{ color: var(--text); }
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    padding: 56px 20px 40px;
+    max-width: 760px;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--line);
+  }
+
+  header.hero h1{
+    font-size: clamp(1.8rem, 5vw, 2.6rem);
+    line-height: 1.15;
+  }
+
+  header.hero p.lead{
+    color: var(--muted);
+    font-size: 1rem;
+    max-width: 580px;
+    margin: 16px 0 0;
+  }
+
+  .creditos{
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+  .creditos strong{ color: var(--text); }
+
+  /* ---------- TIMELINE (sem glow, sem sombra) ---------- */
+  .timeline-wrap{
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 28px 20px 40px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .timeline-track{
+    display:flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .t-node{
+    flex: 1;
+    border-top: 2px solid var(--line);
+    padding-top: 10px;
+  }
+  .t-node.digital{ border-top-color: var(--cyan); }
+
+  .t-year{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+  .t-label{
+    font-size: 0.88rem;
+    font-weight: 600;
+    margin-top: 2px;
+  }
+
+  @media (max-width: 640px){
+    .timeline-track{ flex-direction:column; gap: 16px; }
+  }
+
+  /* ---------- SECTIONS ---------- */
+  .container{
+    width:92%;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  section{
+    padding: 36px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  section:last-of-type{ border-bottom: none; }
+
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+
+  .section-head .num{
+    font-family:'IBM Plex Mono', monospace;
+    color: var(--copper);
+    font-size: 0.85rem;
+  }
+
+  .section-head h2{
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+  }
+
+  .bloco{
+    margin-bottom: 22px;
+  }
+  .bloco:last-child{ margin-bottom: 0; }
+
+  .bloco h3{
+    font-size: 1rem;
+    color: var(--text);
+  }
+  .bloco p.meta{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin: 2px 0 6px;
+  }
+  .bloco p{ color: var(--text); margin: 6px 0 0; }
+
+  .divisor{
+    border:none;
+    border-top: 1px solid var(--line);
+    margin: 22px 0;
+  }
+
+  .grid-2{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 32px;
+  }
+  @media (max-width: 640px){ .grid-2{ grid-template-columns: 1fr; gap: 22px; } }
+
+  /* ---------- PODCAST ---------- */
+  .botao{
+    display:inline-block;
+    margin-top: 14px;
+    border: 1px solid var(--cyan);
+    color: var(--cyan);
+    padding: 10px 20px;
+    text-decoration:none;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+  .botao:hover{ background: var(--cyan); color: var(--bg); }
+
+  .aviso{
+    margin-top: 12px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    text-align:center;
+    padding: 24px 16px 40px;
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#historia">História</a>
+  <a href="#sociologia">Sociologia</a>
+  <a href="#geografia">Geografia</a>
+  <a href="#futuro">Nosso Futuro</a>
+  <a href="#podcast">Podcast</a>
+</nav>
+
+<header class="hero">
+  <p class="eyebrow">Trabalho interdisciplinar — História · Sociologia · Geografia</p>
+  <h1>Da máquina a vapor à Inteligência Artificial</h1>
+  <p class="lead">
+    Como quatro revoluções tecnológicas reorganizaram o trabalho, as cidades e a vida em sociedade —
+    e o que a Indústria 4.0 anuncia para o nosso futuro.
+  </p>
+  <p class="creditos"><strong>Feito por:</strong> Eduardo, Marcos, Nicolas, Pietro</p>
+</header>
+
+<div class="timeline-wrap">
+  <div class="timeline-track">
+    <div class="t-node"><div class="t-year">1760</div><div class="t-label">1ª Revolução</div></div>
+    <div class="t-node"><div class="t-year">1850</div><div class="t-label">2ª Revolução</div></div>
+    <div class="t-node digital"><div class="t-year">1950</div><div class="t-label">3ª Revolução</div></div>
+    <div class="t-node digital"><div class="t-year">2010</div><div class="t-label">4ª Revolução</div></div>
+  </div>
+</div>
+
+<div class="container">
+
+  <section id="historia">
+    <div class="section-head"><span class="num">01</span><h2>As quatro revoluções industriais</h2></div>
+
+    <div class="grid-2">
+      <div class="bloco">
+        <h3>1ª Revolução Industrial</h3>
+        <p class="meta">1760 — 1850</p>
+        <p>A Primeira Revolução Industrial (1760 – 1850) marcou a transição do trabalho artesanal para o mecanizado e assalariado, utilizando o carvão mineral e o vapor para impulsionar a indústria, os transportes e a urbanização, transformando a economia global a partir da Inglaterra.</p>
+      </div>
+
+      <div class="bloco">
+        <h3>2ª Revolução Industrial</h3>
+        <p class="meta">Fim do séc. XIX — início do séc. XX</p>
+        <p>A Segunda Revolução Industrial (1850-1945) consolidou o uso do aço, petróleo e eletricidade, introduzindo a produção em massa. O período foi marcado por invenções transformadoras como o telefone, o avião e a refrigeração, além da supremacia dos automóveis, que expandiu as malhas rodoviárias e revolucionou o transporte global.</p>
+      </div>
+
+      <div class="bloco">
+        <h3>3ª Revolução Industrial</h3>
+        <p class="meta">A partir de 1950</p>
+        <p>A Terceira Revolução Industrial (1950-2010) marcou a transição da tecnologia analógica para a digital, trazendo a internet, a robótica e os microcomputadores. Sob o contexto da Guerra Fria e da corrida espacial, o período viu a consolidação do capitalismo, o surgimento de energias renováveis e avanços na biotecnologia, tendo a invenção do celular como semente para futuras inovações.</p>
+      </div>
+
+      <div class="bloco">
+        <h3>4ª Revolução Industrial</h3>
+        <p class="meta">A partir de 2010</p>
+        <p>O termo "Indústria 4.0" surgiu na Alemanha, na feira de Hannover, e foi popularizado por Klaus Schwab, fundador do Fórum Econômico Mundial. Ela une inteligência artificial, robótica avançada, internet das coisas, big data e computação em nuvem — sistemas físicos e digitais operando de forma integrada.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="sociologia">
+    <div class="section-head"><span class="num">02</span><h2>Impactos na sociedade</h2></div>
+    <p>Cada revolução industrial redesenhou a forma como as pessoas trabalham e se relacionam. Hoje, a automação e a inteligência artificial eliminam algumas funções repetitivas, mas também criam profissões que não existiam há dez anos, como analistas de dados e especialistas em ética de IA.</p>
+    <hr class="divisor">
+    <p>Ao mesmo tempo, o mercado de trabalho passa a exigir requalificação constante: quem não acompanha as mudanças tecnológicas corre o risco de ficar para trás. Isso também amplia desigualdades, já que nem todos têm o mesmo acesso a educação tecnológica e conectividade.</p>
+    <hr class="divisor">
+    <p>O trabalho remoto, os aplicativos de entrega e as plataformas digitais também mudaram os vínculos empregatícios, trazendo mais flexibilidade, mas menos estabilidade para muitos trabalhadores.</p>
+  </section>
+
+  <section id="geografia">
+    <div class="section-head"><span class="num">03</span><h2>Transformação do espaço</h2></div>
+    <p>As indústrias moldaram o crescimento das cidades desde o século 18, atraindo populações do campo e formando os grandes centros urbanos. A globalização, impulsionada pela 3ª e 4ª revoluções, espalhou cadeias produtivas por diferentes países, conectando fábricas, fornecedores e consumidores em uma rede mundial.</p>
+    <hr class="divisor">
+    <p>Hoje, o conceito de <strong>cidades inteligentes</strong> ganha força: sensores, sistemas de dados e IA são usados para otimizar trânsito, consumo de energia e serviços públicos. A logística também se torna mais eficiente com o rastreamento em tempo real de mercadorias, algo impensável na era da máquina a vapor.</p>
+  </section>
+
+  <section id="futuro">
+    <div class="section-head"><span class="num">04</span><h2>Nosso futuro</h2></div>
+    <div class="grid-2">
+      <div class="bloco"><h3>Carros autônomos</h3><p>Veículos guiados por IA prometem reduzir acidentes e reorganizar o trânsito das cidades.</p></div>
+      <div class="bloco"><h3>Impressão 3D</h3><p>Permite fabricar peças sob demanda, reduzindo desperdício e encurtando cadeias produtivas.</p></div>
+      <div class="bloco"><h3>Robótica avançada</h3><p>Robôs cada vez mais autônomos assumem tarefas de precisão na indústria e na saúde.</p></div>
+      <div class="bloco"><h3>Cidades inteligentes</h3><p>Dados em tempo real ajudam a tornar o transporte, a energia e os serviços públicos mais eficientes.</p></div>
+    </div>
+    <hr class="divisor">
+    <p>Mais importante do que prever o futuro é discutir como queremos vivê-lo: quais empregos vamos precisar, como garantir que a tecnologia diminua — e não aumente — as desigualdades, e que limites éticos a inteligência artificial deve respeitar.</p>
+  </section>
+
+  <section id="podcast">
+    <div class="section-head"><span class="num">05</span><h2>Podcast</h2></div>
+    <p>Clique no botão abaixo para assistir ao nosso podcast.</p>
+    <a class="botao" href="https://youtu.be/_BfB1MHwFC8?si=CRuSAbnY0tSGo5ST" target="_blank" rel="noopener">Assistir podcast</a>
+    <p class="aviso">PodCast totalmente educativo.</p>
+  </section>
+
+</div>
+
+<footer>
+  Trabalho Interdisciplinar — História, Sociologia e Geografia · Future News
+</footer>
+
+</body>
+</html>
